@@ -1,0 +1,9 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block admin_body %}
+    <h4 class="text-center">Ajout d'un oeuvre</h4>
+
+    {{ include('admin/oeuvre/_form.html.twig') }}
+
+    <a href="{{ path('oeuvre_index') }}">Retourner à la liste</a>
+{% endblock %}

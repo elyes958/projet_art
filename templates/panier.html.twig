@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Panier</h1>
+    <table class="table">
+        <thead class="thead-dark text-center">
+        <tr>
+            <th >Nom</th>
+            <th >Photo</th>
+            <th >Prix</th>
+{#            <th >Prix Total</th>#}
+{#            <th ><button class="btn btn-primary">Retirer</button></th>#}
+{#            <th ><button class="btn btn-primary">Ajouter</button>  </th>#}
+            <th >Annuler</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for item in items %}
+            <tr>
+                <td>{{ item.oeuvre.nom }}</td>
+                <td><img height="40" width="40" src="{{ asset('uploads/oeuvres/') }}{{ item.oeuvre.image }}" alt="{{ item.oeuvre.nom }}"></td>
+                <td>{{ item.oeuvre.prix }}</td>
+{#                <td>#}
+{#                    <a href="{{ path('retrait_panier', {'id': item.oeuvre.id}) }}"><button class="btn btn-primary text-white">-</button></a></td>#}
+{#                <td>#}
+{#                    <a href="{{ path('ajout_panier', {'id': item.oeuvre.id,'param':"panier"}) }}"><button class="btn btn-primary text-white">+</button></a></td>#}
+                <td>
+                    <a href="{{ path('annule_panier', {'id': item.oeuvre.id}) }}"><button class="btn btn-outline-danger btn-rounded" >Annuler</button></a></td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+    <div class="col-md-8"><h5>Total de la commande : {{ total }} €</h5></div>
+    <div class="col-md-4"><a href="{{ path('commande') }}">
+            <button class="btn btn-success">Commander</button>
+        </a>
+    </div>
+
+
+{% endblock %}

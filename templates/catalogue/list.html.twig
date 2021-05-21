@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block body %}
+	<div class="container">
+	    <div class="row">
+	        <div class="col-12 col-sm-3">
+	            <div class="card bg-light mb-3">
+	                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Filtrer par catégorie</div>
+	                <ul class="list-group category_block">
+	                	{% for categorie in categories %}
+	                		<li class="list-group-item"><a href="{{ path('catalogue' , {categorieId: categorie.id}) }}">{{ categorie.nom }}</a></li>
+	                    {% endfor %}
+	                </ul>
+	            </div>
+	        </div>
+	        <div class="col">
+	            <div class="row">
+	            	{% for oeuvre in oeuvres %}
+		                <div class="col-12 col-md-6 col-lg-4">
+		                    <div class="card">
+		                        <img class="card-img-top" src="{{ asset('uploads/oeuvres/') }}{{ oeuvre.image }}" height="200" alt="Card image cap">
+		                        <div class="card-body">
+		                            <h4 class="card-title">
+		                            	<a href="#" title="View Product">{{ oeuvre.nom }}</a>
+		                            </h4>
+		                            <p class="card-text">{{ oeuvre.description }}</p>
+		                            <div class="row">
+		                                <div class="col">
+		                                    <p class="btn btn-warning btn-block text-white font-weight-bold">{{ oeuvre.prix }} €</p>
+		                                </div>
+		                                <div class="col">
+		                                    <a href="{{ path('ajout_panier',{id:oeuvre.id }) }}" class="btn btn-success btn-block">Ajouter au panier</a>
+		                                </div>
+										<div class="col">
+											<a href="{{ path('panier',{id:oeuvre.id }) }}" class="btn btn-primary btn-block">Voir panier</a>
+										</div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            {% endfor %}
+	            </div>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}

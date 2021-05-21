@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Inscription</h1>
+    {{ form_start(formRegistration) }}
+{#    {{ form_row(formRegistration.nom) }}#}
+{#    {{ form_row(formRegistration.prenom) }}#}
+    {{ form_row(formRegistration.username) }}
+    {{ form_row(formRegistration.email) }}
+    {{ form_row(formRegistration.password) }}
+    {{ form_row(formRegistration.confirm_password) }}
+    <button class="btn btn-primary">Valider</button>
+    {{ form_end(formRegistration) }}
+
+{% endblock %}
+
+
+

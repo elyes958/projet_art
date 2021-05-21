@@ -1,0 +1,40 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block admin_body %}
+    <h4 class="text-center">Consultation d'un oeuvre</h4>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ oeuvre.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ oeuvre.nom }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ asset('uploads/oeuvres/') }}{{ oeuvre.image }}" height="100" alt="{{ oeuvre.nom }}" ></td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ oeuvre.categorie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ oeuvre.prix }} €</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ oeuvre.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('oeuvre_index') }}">Retourner à la liste</a>
+
+    <a href="{{ path('oeuvre_edit', {'id': oeuvre.id}) }}">Modifier</a>
+
+    {{ include('admin/oeuvre/_delete_form.html.twig') }}
+{% endblock %}

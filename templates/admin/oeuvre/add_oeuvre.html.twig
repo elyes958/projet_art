@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ajout d'une oeuvre</h1>
+    {{ form_start(formOeuvre) }}
+    {{ form_row(formOeuvre.nom) }}
+    {{ form_row(formOeuvre.prix) }}
+    {{ form_row(formOeuvre.description) }}
+    {{ form_row(formOeuvre.categorie) }}
+    {{ form_row(formOeuvre.stock) }}
+    {{ form_row(formOeuvre.approvisionnement) }}
+    {{ form_row(formOeuvre.image, { 'attr' : {"onChange" : "loadFile(event)"}  }  )         }}
+
+    <div class="col-md-12 text-center">
+
+        <img id="image" style='width:300px'>
+
+    </div>
+    <button class="btn btn-primary" type="submit">Ajouter</button>
+    {{ form_end(formArticle) }}
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+
+<script>
+
+    var loadFile = function(event){
+        var image = document.getElementById('image');
+
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+</script>
+
+<script>
+    $(function(){
+        $('.select2').select2()
+
+    })
+</script>
+{% endblock %}

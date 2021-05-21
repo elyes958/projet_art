@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for commande in commandes %}
+    <table class="table border mt-">
+        <thead class="thead-dark text-center">
+
+        <tr class="text-center">
+           <h4>Commande N° {{ commande.id }} du {{ commande.date | date('d-m-Y') }} | Montant:{{ commande.total }}€</h4>
+        </tr>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Prix unitaire</th>
+            <th scope="col">Prix Total</th>
+            <th scope="col">Valider</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for achat in commande.achats %}
+            <tr>
+                <td>{{ achat.oeuvre.nom }}</td>
+                <td><img width="40" height="40" src="{{ asset('uploads/oeuvres/') }}{{ achat.oeuvre.image }}" alt=""></td>
+                <td>{{ achat.oeuvre.prix }}</td>
+                <td>{{ achat.prix }}</td>
+                <td><a href=""><button class="btn btn-warning">Valider</button></a></td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+{% endblock %}
+

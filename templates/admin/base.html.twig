@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace Admin{% endblock %}
+
+{% block body %}
+    <main role="main" class="container">
+        <div class="row">
+            <aside class="col-md-3">
+                <div class="card bg-light mb-3">
+                    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Menu Admin</div>
+                    <ul class="list-group category_block">
+                        <li class="list-group-item"><a href="{{ path('admin_index') }}">Accueil Admin</a></li>
+                        <li class="list-group-item"><a href="{{ path('categorie_index')}}">Gestion des catégories</a></li>
+                        <li class="list-group-item"><a href="{{ path('oeuvre_index')}}">Gestion des oeuvres</a></li>
+                        <li class="list-group-item"><a href="{{ path('gestion_commandes')}}">Gestion des commandes</a></li>
+                    </ul>
+                </div>
+            </aside>
+            <div class="col-md-9">
+                {% block admin_body %}{% endblock %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
