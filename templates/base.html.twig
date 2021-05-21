@@ -16,8 +16,8 @@
     {% block stylesheets %} {% endblock %}
 </head>
 <body>
-<div class="container">
-    <header class="py-2">
+<div>
+    <header >
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
                 <a href="{{ path('home') }}">
@@ -68,6 +68,63 @@
 <main role="main" class="container">
     {% block body %}{% endblock %}
 </main>
+<footer class="footer-area bg-warning">
+    <div class="footer-big">
+        <!-- start .container -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div class="footer-widget">
+                        <ul class="contact-details">
+                            <li>
+                                <span class="icon-earphones"></span> Appelez Nous:
+                                <a href="tel:344-755-111">+33 612345678</a>
+                            </li>
+                            <li>
+                                <span class="icon-envelope-open"></span>
+                                <a href="mailto:support@aazztech.com">admin@art.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end /.col-md-4 -->
+            <div class="col-md-3 col-sm-4">
+            </div>
+            <!-- end /.footer-menu -->
+        </div>
+        <!-- Ends: .footer-widget -->
+    </div>
+    <!-- Ends: .col-lg-3 -->
+
+    </div>
+    <!-- end /.row -->
+    </div>
+    <!-- end /.container -->
+    </div>
+    <!-- end /.footer-big -->
+
+    <div class="mini-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright-text">
+                        <p>© 2021
+                            <a href="#">DigiPro</a>.Oeuvre d'Art
+                            <a href="#">AazzTech</a>
+                        </p>
+                    </div>
+
+                    <div class="go_top">
+                        <span class="icon-arrow-up"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
 <script src="https://kit.fontawesome.com/9e7c94804d.js" crossorigin="anonymous"></script>
 
