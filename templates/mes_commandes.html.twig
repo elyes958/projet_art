@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commandes{% endblock %}
+
+{% block body  %}
+	<h1>Mes commandes</h1>
+    <table class="table">
+        <thead class="thead-dark text-center">
+	        <tr>
+	            <th>Id</th>
+	            <th>Date commande</th>
+	            <th>Total de la commande</th>
+	        </tr>
+        </thead>
+        <tbody class="text-center">
+	        {% for commande in commandes %}
+	            <tr>
+	                <td>{{ commande.id }}</td>
+	                <td>{{ commande.date|date('d-m-Y H:i:s') }}</td>
+	                <td>{{ commande.total }} €</td>
+	            </tr>
+	        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

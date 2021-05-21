@@ -1,69 +1,76 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>Oeuvres d'art - {% block title %}{% endblock %}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Oeuvres d'art - {% block title %}{% endblock %}</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-        
-        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 
-        {% block stylesheets %} {% endblock %}
-    </head>
-    <body>
-        <div class="container">
-            <header class="py-2">
-                <div class="row flex-nowrap justify-content-between align-items-center">
-                    <div class="col-4 pt-1">
-                        <a href="{{ path('home') }}">
-                            <img src="{{ asset('assets/img/logo.png') }}" alt="logo">
-                        </a>
-                    </div>
-                    <div class="col-4 text-center">
-                        <p style="color:black;font-family:Verdana;font-size:32px" >
-                            <b>Oeuvres d'art</b> <br>
-                            <br>
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
-                        </p>
-                    </div>
-                    <div class="col-4 d-flex justify-content-end align-items-center">
-                        <ul style="list-style: none;">
-                            {% if is_granted('ROLE_USER') %}
-                                <li><a href="{{ path('logout') }}" class="btn btn-sm btn-danger">Se déconnecter</a></li>
-                                <br>
-                                {% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href="{{ path('admin_index') }}" class="btn btn-sm btn-primary" style="width:114px;">Espace Admin</a></li>
-                                {% endif %}
-                            {% else %}
-                                <li><a href="{{ path('login') }}" class="btn btn-sm btn-info">Se connecter</a></li>
-                                <li><a href="{{ path('inscription') }}">S'inscrire</a></li>
-                            {% endif %}
-                        </ul>
-                        
-                    </div>
-                </div>
-            </header>
-            <div class="nav-scroller py-1 font-weight-bold">
-                <nav class="nav d-flex justify-content-between bg-warning">
-                    <a class="p-2  text-dark" href="{{ path('home') }}">ACCUEIL</a>
-                    <a class="p-2  text-dark" href="{{ path('catalogue') }}">CATALOGUE DES OEUVRES</a>
-                    <a class="p-2  text-dark" href="{{ path('send_form')}}
-">NOUS CONTACTER</a>
-                </nav>
-                <hr>
+    {% block stylesheets %} {% endblock %}
+</head>
+<body>
+<div class="container">
+    <header class="py-2">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1">
+                <a href="{{ path('home') }}">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="logo">
+                </a>
+            </div>
+            <div class="col-4 text-center">
+                <p style="color:black;font-family:Verdana;font-size:32px" >
+                    <b>Oeuvres d'art</b> <br>
+                    <br>
+
+                </p>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                <ul style="list-style: none;">
+                    {% if is_granted('ROLE_USER') %}
+                        <li style="margin-bottom: 3px;">
+                            <a href="{{ path('panier') }}" class="btn btn-sm btn-primary btn-block">Mon panier</a>
+                        </li>
+                        <li style="margin-bottom: 3px;">
+                            <a href="{{ path('mes_commandes') }}" class="btn btn-sm btn-warning btn-block">Mes commandes</a>
+                        </li>
+                        <li style="margin-bottom: 3px;">
+                            <a href="{{ path('logout') }}" class="btn btn-sm btn-danger btn-block">Se déconnecter</a>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('admin_index') }}" class="btn btn-sm btn-primary" style="width:114px;">Espace Admin</a></li>
+                        {% endif %}
+                    {% else %}
+                        <li><a href="{{ path('login') }}" class="btn btn-sm btn-info">Se connecter</a></li>
+                        <li><a href="{{ path('inscription') }}">S'inscrire</a></li>
+                    {% endif %}
+                </ul>
+
             </div>
         </div>
-        <main role="main" class="container">
-            {% block body %}{% endblock %}
-        </main>
+    </header>
+    <div class="nav-scroller py-1 font-weight-bold">
+        <nav class="nav d-flex justify-content-between bg-warning">
+            <a class="p-2  text-dark" href="{{ path('home') }}">ACCUEIL</a>
+            <a class="p-2  text-dark" href="{{ path('catalogue') }}">CATALOGUE DES OEUVRES</a>
+            <a class="p-2  text-dark" href="{{ path('send_form')}}
+">NOUS CONTACTER</a>
+        </nav>
+        <hr>
+    </div>
+</div>
+<main role="main" class="container">
+    {% block body %}{% endblock %}
+</main>
 
-        <script src="https://kit.fontawesome.com/9e7c94804d.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/9e7c94804d.js" crossorigin="anonymous"></script>
 
-        {% block javascripts %} {% endblock %}
-    </body>
+{% block javascripts %} {% endblock %}
+</body>
 </html>
